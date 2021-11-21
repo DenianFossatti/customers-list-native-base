@@ -1,0 +1,46 @@
+{
+  "name": "CustomersList",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "lint": "eslint .",
+    "lint:ci": "eslint --fix --ext .js,.ts,.tsx --quiet",
+    "lint:fix": "eslint --fix --ext .js,.ts,.tsx --fix",
+    "prepare": "husky install",
+    "start": "react-native start",
+    "test": "jest"
+  },
+  "jest": {
+    "preset": "react-native"
+  },
+  "dependencies": {
+    "native-base": "^3.2.2",
+    "react": "17.0.2",
+    "react-native": "0.66.3",
+    "react-native-safe-area-context": "^3.3.2",
+    "react-native-svg": "^12.1.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/preset-react": "^7.16.0",
+    "@babel/runtime": "^7.16.3",
+    "@commitlint/cli": "^15.0.0",
+    "@commitlint/config-conventional": "^15.0.0",
+    "@react-native-community/eslint-config": "^3.0.1",
+    "@typescript-eslint/eslint-plugin": "^5.4.0",
+    "@typescript-eslint/parser": "^5.4.0",
+    "babel-jest": "^27.3.1",
+    "eslint": "^8.2.0",
+    "eslint-plugin-import": "^2.25.3",
+    "husky": "^7.0.4",
+    "jest": "^27.3.1",
+    "lint-staged": "^12.0.3",
+    "metro-react-native-babel-preset": "^0.66.2",
+    "prettier": "^2.4.1",
+    "react-test-renderer": "17.0.2",
+    "sort-package-json": "^1.53.1",
+    "typescript": "^4.5.2"
+  }
+}
