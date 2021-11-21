@@ -1,0 +1,28 @@
+name: Lint workflow
+
+on:
+  push:
+    branches-ignore:
+      - master
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message , '[skip ci]')"
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+          cache: yarn
+
+      - name: install
+        run: |
+          yarn install --frozen-lockfile --non-interactive
+
+      - name: lint
+        run: |
+          yarn lint:ci
