@@ -29,16 +29,17 @@ const CustomersList = () => {
   }, []);
 
   const keyExtractor = useCallback((item) => item.id, []);
+
   const handleInputChange = useCallback(
     (event: NativeSyntheticEvent<TextInputChangeEventData>) => setSearch(event.nativeEvent.text),
     [],
   );
 
   return (
-    <Box p="4">
+    <Box p="4" backgroundColor="gray.100">
       <Input
         placeholder="Search by First or Last name"
-        bg="gray.50"
+        bg="white"
         width="100%"
         borderRadius="4"
         py="3"
@@ -61,6 +62,7 @@ const CustomersList = () => {
         renderItem={renderItem}
         onEndReached={handleOnEndReached}
         onEndReachedThreshold={0.1}
+        showsVerticalScrollIndicator={false}
       />
     </Box>
   );

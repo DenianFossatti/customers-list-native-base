@@ -1,19 +1,22 @@
-import { Avatar, Box, Text, useContrastText } from 'native-base';
+import { useNavigation } from '@react-navigation/native';
+import { Avatar, Box, Pressable, Text, useContrastText } from 'native-base';
 import { useMemo } from 'react';
 
 interface CustomersCardProps {
+  id: number;
   firstName: string;
   lastName: string;
   email: string;
   color: string;
 }
 
-const CustomersCard = ({ firstName, lastName, email, color }: CustomersCardProps) => {
+const CustomersCard = ({ id, firstName, lastName, email, color }: CustomersCardProps) => {
+  const navigation = useNavigation();
   const avatarLetters = useMemo(() => firstName[0] + lastName[0], [firstName, lastName]);
   const textColor = useContrastText(`${color}.500`);
 
   return (
-    <Box
+    <Pressable
       borderRadius={5}
       backgroundColor="white"
       flexDirection="row"
@@ -22,6 +25,11 @@ const CustomersCard = ({ firstName, lastName, email, color }: CustomersCardProps
       my="2"
       borderWidth={1}
       borderColor="gray.300"
+      onPress={() =>
+        navigation.navigate('CustomerDetails', {
+          customerId: id,
+        })
+      }
     >
       <Box>
         <Avatar color={textColor} bg={`${color}.500`}>
@@ -34,7 +42,7 @@ const CustomersCard = ({ firstName, lastName, email, color }: CustomersCardProps
         </Text>
         <Text>{email}</Text>
       </Box>
-    </Box>
+    </Pressable>
   );
 };
 

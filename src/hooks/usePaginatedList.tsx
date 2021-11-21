@@ -29,7 +29,7 @@ const usePaginatedList = <D extends { id: number }>({ data, search, searchFields
   );
 
   const updateLoadedDataAndCursor = useCallback(
-    (newLoadedData: any[]) => {
+    (newLoadedData: D[]) => {
       const lastItem = newLoadedData[newLoadedData.length - 1];
       const lastItemCursor = data.findIndex((item) => item.id === lastItem?.id);
       let _hasNext: boolean;
