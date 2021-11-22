@@ -11,6 +11,7 @@ const usePaginatedList = <D extends { id: number }>({ data, search, searchFields
   const [loadedData, setLoadedData] = useState<D[]>([]);
   const [cursor, setCursor] = useState(0);
   const [hasNext, setHasNext] = useState(false);
+  const [isLoading, setLoading] = useState(false);
   const shouldRenderAgain = useRef(false);
 
   const searchMatchesAnyField = useCallback(
@@ -49,27 +50,34 @@ const usePaginatedList = <D extends { id: number }>({ data, search, searchFields
   );
 
   const paginate = useCallback(() => {
-    if (search) {
-      const filteredData = [];
-      const slicedData = data.slice(cursor, data.length);
+    setLoading(true);
 
-      for (let i = 0; i < slicedData.length; i++) {
-        const searchMatches = searchMatchesAnyField(slicedData[i]);
+    // Simulate api delay
+    setTimeout(() => {
+      if (search) {
+        const filteredData = [];
+        const slicedData = data.slice(cursor, data.length);
 
-        if (searchMatches) {
-          filteredData.push(slicedData[i]);
+        for (let i = 0; i < slicedData.length; i++) {
+          const searchMatches = searchMatchesAnyField(slicedData[i]);
+
+          if (searchMatches) {
+            filteredData.push(slicedData[i]);
+          }
+
+          if (filteredData.length === limit) {
+            break;
+          }
         }
 
-        if (filteredData.length === limit) {
-          break;
-        }
+        updateLoadedDataAndCursor(filteredData);
+      } else {
+        const filteredData = data.slice(cursor, cursor + limit);
+        updateLoadedDataAndCursor(filteredData);
       }
 
-      updateLoadedDataAndCursor(filteredData);
-    } else {
-      const filteredData = data.slice(cursor, cursor + limit);
-      updateLoadedDataAndCursor(filteredData);
-    }
+      setLoading(false);
+    }, 1000);
   }, [cursor, data, limit, search, searchMatchesAnyField, updateLoadedDataAndCursor]);
 
   useEffect(() => {
@@ -88,7 +96,7 @@ const usePaginatedList = <D extends { id: number }>({ data, search, searchFields
 
   const loadNext = useCallback(() => paginate(), [paginate]);
 
-  return { data: loadedData, loadNext, hasNext };
+  return { data: loadedData, loadNext, hasNext, isLoading };
 };
 
 export default usePaginatedList;
