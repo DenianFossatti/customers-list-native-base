@@ -2,7 +2,7 @@
 
 ## 1. Summary
 
-### Main Tools and Libs used
+### Main Tools and Libs
 
 | Lib      | Description |
 | ----------- | ----------- |
@@ -13,6 +13,14 @@
 | Detox   | E2E Tests        |
 | ESLint   | Linting        |
 | Husky   | Pre-commit's hooks        |
+
+
+### Actions
+
+| Workflow      | Description |
+| ----------- | ----------- |
+| Lint      | Run ESLint in files to prevent irregular code       |
+| E2E Android   | Run detox E2E tests on Android Emulator        |
 
 ## 2. Install & Run
 
