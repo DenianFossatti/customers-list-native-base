@@ -26,3 +26,5 @@
 -keepclassmembers class * {
     @com.facebook.jni.annotations.DoNotStrip *;
 }
+
+-keep public class com.horcrux.svg.** {*;}
