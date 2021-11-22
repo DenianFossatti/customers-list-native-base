@@ -6,7 +6,6 @@ import components from './components';
 const theme = {
   ...base,
   components,
-  font: { family: '"Roboto", sans-serif' },
   fontConfig: {
     Roboto: {
       100: {

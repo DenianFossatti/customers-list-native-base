@@ -1,0 +1,14 @@
+{
+  "globalTeardown": "./global-teardown.js",
+  "setupFilesAfterEnv": ["./setup.ts"],
+  "maxWorkers": 1,
+  "testEnvironment": "./environment",
+  "testRunner": "jest-circus/runner",
+  "testTimeout": 120000,
+  "testRegex": "e2e/__tests__/.*\\.e2e\\.[jt]sx?$",
+  "transform": {
+    "\\.[jt]sx?$": "babel-jest"
+  },
+  "reporters": ["detox/runners/jest/streamlineReporter"],
+  "verbose": true
+}

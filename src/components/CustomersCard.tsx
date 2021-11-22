@@ -17,6 +17,7 @@ const CustomersCard = ({ id, firstName, lastName, email, color }: CustomersCardP
 
   return (
     <Pressable
+      testID="CustomersCard"
       borderRadius={5}
       backgroundColor="white"
       flexDirection="row"

@@ -3,13 +3,15 @@ import { useCallback, useState } from 'react';
 
 import { NativeSyntheticEvent, TextInputChangeEventData } from 'react-native';
 
-import customers from '../data/customers.json';
+import customersProvider from '../data/customersProvider';
 import usePaginatedList from '../hooks/usePaginatedList';
 import CustomersCard from '../components/CustomersCard';
 
 const LIMIT = 10;
 
 type CustomersType = typeof customers[number];
+
+const customers = customersProvider();
 
 const CustomersList = () => {
   const searchFields = ['firstName', 'lastName'];
@@ -36,7 +38,7 @@ const CustomersList = () => {
   );
 
   return (
-    <Box p="4" backgroundColor="gray.100">
+    <Box p="4" backgroundColor="gray.100" testID="CustomersList">
       <Input
         placeholder="Search by First or Last name"
         bg="white"

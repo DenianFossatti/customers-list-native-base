@@ -1,6 +1,6 @@
 import { NativeBaseProvider } from 'native-base';
 
-import theme from './nativeBase/Theme';
+import theme from './nativeBase/theme';
 
 import AppRouter from './router/AppRouter';
 
