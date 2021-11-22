@@ -1,5 +1,5 @@
 import customers from './customers.json';
 
-const customersProvider = () => customers.slice(0, 2);
+const customersProvider = () => customers;
 
 export default customersProvider;
