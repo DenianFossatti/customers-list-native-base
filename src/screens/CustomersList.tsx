@@ -1,4 +1,4 @@
-import { Box, Input, SearchIcon } from 'native-base';
+import { Box, CloseIcon, Input, Pressable, SearchIcon } from 'native-base';
 import { useCallback, useEffect, useState } from 'react';
 
 import { FlatList, NativeSyntheticEvent, TextInputChangeEventData } from 'react-native';
@@ -54,6 +54,7 @@ const CustomersList = () => {
   return (
     <Box p="4" backgroundColor="gray.100">
       <Input
+        value={debouncedSearch}
         placeholder="Search by First or Last name"
         bg="white"
         width="100%"
@@ -63,6 +64,11 @@ const CustomersList = () => {
         onChange={handleInputChange}
         testID="CustomersListInput"
         InputLeftElement={<SearchIcon m="1" ml="3" size="5" color="gray.400" />}
+        InputRightElement={
+          <Pressable onPress={() => setDebouncedSearch('')}>
+            <CloseIcon m="1" mr="3" size="4" color="gray.400" />
+          </Pressable>
+        }
       />
       <FlatList
         data={data}
