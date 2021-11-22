@@ -6,7 +6,7 @@ import AppRouter from './router/AppRouter';
 
 const App = () => {
   return (
-    <NativeBaseProvider theme={theme}>
+    <NativeBaseProvider theme={theme} config={{ suppressColorAccessibilityWarning: true }}>
       <AppRouter />
     </NativeBaseProvider>
   );
